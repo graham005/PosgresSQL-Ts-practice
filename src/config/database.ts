@@ -55,7 +55,99 @@ class Database {
                     created_at TIMESTAMPZ DEFAULT NOW()
                 )
             `);
-            console.log('USers table created or already exists');
+            console.log('Users table created or already exists');
+            
+             // Create sales table 
+            await this.executeQuery(`
+                CREATE TABLE Sales (
+                    sale_id INT PRIMARY KEY,
+                    product_id INT,
+                    quantity_sold INT,
+                    sale_date DATE,
+                    total_price DECIMAL(10, 2)
+                    FOREIGN KEY (product_id) REFERENCES Products(product_id)
+                )
+            `);
+            console.log('Sales table created or already exists');
+            
+             // Create products table 
+            await this.executeQuery(`
+                CREATE TABLE Products (
+                    product_id INT PRIMARY KEY,
+                    product_name VARCHAR(100),
+                    category VARCHAR(50),
+                    unit_price DECIMAL(10, 2),
+                    stock_quantity INT,
+                );
+            `);
+            console.log('Product table created or already exists');
+            
+             // Create employees table 
+            await this.executeQuery(`
+                CREATE TABLE employees (
+                    employee_id INT PRIMARY KEY,
+                    first_name VARCHAR(50),
+                    last_name VARCHAR(50),
+                    email VARCHAR(100),
+                    phone_number VARCHAR(20),
+                    hire_date DATE,
+                    job_id VARCHAR(10),
+                    salary DECIMAL(10,2),
+                );
+            `);
+            console.log('Employees table created or already exists');
+            
+             // Create customers table 
+            await this.executeQuery(`
+                CREATE TABLE customers (
+                    customer_id INT PRIMARY KEY,
+                    first_name VARCHAR(50),
+                    last_name VARCHAR(50),
+                    email VARCHAR(100),
+                    phone VARCHAR(20),
+                    address VARCHAR(100),
+                    city VARCHAR(50),
+                    state VARCHAR(50),
+                    zip_code VARCHAR(20),
+                    registration_date DATE
+                )
+            `);
+            console.log('Customers table created or already exists');
+            
+             // Create employee_skills table 
+            await this.executeQuery(`
+                CREATE TABLE employee_skills (
+                    employee_id INT,
+                    skill_id INT,
+                    proficiency_level VARCHAR(20),
+                    certification_date DATE NULL,
+                    PRIMARY KEY (employee_id, skill_id),
+                    FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
+                );
+            `);
+            console.log('Employee Skills table created or already exists');
+            
+             // Create skills table 
+            await this.executeQuery(`
+                CREATE TABLE skills (
+                    skill_id INT PRIMARY KEY,
+                    skill_name VARCHAR(50),
+                    skill_category VARCHAR(50)
+                );
+            `);
+            console.log('Skills table created or already exists');
+            
+             // Create orders table 
+            await this.executeQuery(`
+                CREATE TABLE orders (
+                    order_id INT PRIMARY KEY,
+                    customer_id INT,
+                    order_date DATE,
+                    status VARCHAR(20),
+                    total_amount DECIMAL(12,2)
+                );
+            `);
+            console.log('Orders table created or already exists');
 
             //Create other tables HERE -> -> - >
             console.log('Database schema initialized successfully');
