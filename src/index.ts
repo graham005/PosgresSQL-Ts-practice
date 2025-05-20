@@ -26,9 +26,11 @@ import { SalesService } from "./examples/querying &filtering";
       await salesService.getSalesByHighestQuantity();
     console.log("Sales by highest quantity:", salesByHighestQuantity);
 
-    // joins
+    // !joins sheila
 
-    // grouping
+    // *grouping timo
+
+    ///? enock cubes
 
     //
   } catch (error) {
