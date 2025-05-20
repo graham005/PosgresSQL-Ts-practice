@@ -1,6 +1,5 @@
 import db, { executeQuery } from "../config/database";
 
-// User Interface defining the structure of user data
 export interface TUser {
     id?: number;
     fname: string;
