@@ -85,7 +85,6 @@ class Database {
                     product_name VARCHAR(100),
                     category VARCHAR(50),
                     unit_price DECIMAL(10, 2),
-                    stock_quantity INT
                 )
             `);
       console.log("Product table created or already exists"); // Create employees table
