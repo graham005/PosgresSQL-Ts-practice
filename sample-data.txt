@@ -40,13 +40,17 @@ INSERT INTO employees VALUES
 
 6-- Insert sample data into employee_skills table
 
-(101, 'Robert', 'Taylor', 'robert.t@email.com', '212-555-1234', '123 Main St', 'New York', 'NY', '10001', '2022-01-15'),
-(102, 'Jennifer', 'Anderson', 'jennifer.a@email.com', '213-555-2345', '456 Oak Ave', 'Los Angeles', 'CA', '90001', '2022-02-20'),
-(103, 'Thomas', 'Wilson', 'thomas.w@email.com', '312-555-3456', '789 Pine Rd', 'Chicago', 'IL', '60007', '2022-03-10'),
-(104, 'Lisa', 'Martinez', 'lisa.m@email.com', '305-555-4567', '321 Beach Blvd', 'Miami', 'FL', '33101', '2022-04-05'),
-(105, 'William', 'Lee', 'william.l@email.com', '415-555-5678', '654 Hill St', 'San Francisco', 'CA', '94101', '2022-05-12'),
-(106, 'Jessica', 'Garcia', 'jessica.g@email.com', '713-555-6789', '987 Lake View', 'Houston', 'TX', '77001', '2022-06-18'),
-(107, 'Daniel', 'Davis', 'daniel.d@email.com', '602-555-7890', '147 Desert Way', 'Phoenix', 'AZ', '85001', '2022-07-22');
+INSERT INTO employee_skills VALUES
+(101, 1, 'Expert', '2021-03-15'),
+(101, 3, 'Advanced', '2020-11-20'),
+(102, 2, 'Intermediate', '2022-01-10'),
+(102, 4, 'Advanced', '2021-07-05'),
+(103, 5, 'Beginner', NULL),
+(103, 6, 'Intermediate', '2022-05-30'),
+(104, 7, 'Advanced', '2021-09-12'),
+(104, 8, 'Expert', '2020-12-01'),
+(105, 9, 'Intermediate', '2022-02-18'),
+(105, 10, 'Beginner', NULL);
 
 
 7-- Insert sample data into skills table
@@ -75,3 +79,5 @@ INSERT INTO orders VALUES
 (1006, 105, '2023-01-20', 'Shipped', 720.40),
 (1007, 102, '2023-01-21', 'Completed', 1895.30),
 (1008, 103, '2023-01-22', 'Processing', 650.00);
+
+
