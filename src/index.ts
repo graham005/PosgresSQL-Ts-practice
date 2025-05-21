@@ -3,6 +3,7 @@ import { SalesService } from "./examples/querying &filtering";
 import {Products,  insertOneProduct, insertMultipleProducts,query} from "./examples/joins";
 import {Sales, insertOneSales, insertMultipleSales, querySales} from "./examples/joins";
 import { SalesWithProduct, JoinSalesWithProductDetails} from "./examples/joins";
+import { updateOneProduct,deleteOneProduct,upsertProducts} from "./examples/modifying";
 
 (async () => {
   try {
@@ -43,7 +44,7 @@ import { SalesWithProduct, JoinSalesWithProductDetails} from "./examples/joins";
     // !joins sheila
 (async () => {
   try{
-    await initializeTables();
+    // await initializeTables();
 
     const product_id = await insertOneProduct({product_id:101,  product_name:'Laptop', category:'Electronics',unit_price: 500.00});
     console.log(`Product inserted with ID: ${product_id}`);
@@ -66,7 +67,7 @@ import { SalesWithProduct, JoinSalesWithProductDetails} from "./examples/joins";
 
 (async () => {
   try{
-    await initializeTables();
+    // await initializeTables();
 
     const sales_id = await insertOneSales({product_id: 101, quantity_sold: 5, sale_date: new Date('2024-01-01'), total_price: 2500.00});
     console.log(`Sales inserted with ID: ${sales_id}`);
@@ -86,9 +87,24 @@ import { SalesWithProduct, JoinSalesWithProductDetails} from "./examples/joins";
   catch (error) {
     console.error("Error in sales operations:", error);
   }
-}
-)();
+})();
  
+//modifying datahow 
+(async ()=> {
+  try{
+    await initializeTables();
+      const product_id = await updateOneProduct({product_id:105,  product_name:'Laptop', category:'Electronics',unit_price: 3000.00});
+      console.log('update product');
+
+      const deleteProduct = await deleteOneProduct({product_id:103,  product_name:'Laptop', category:'Electronics',unit_price: 3000.00});
+      console.log('delete product');
+
+      const upsertData = await upsertProducts({product_id:103,  product_name:'Monitor', category:'Electronics',unit_price: 20000.00})
+  } catch(error){
+    console.log('error modifying data', error);
+  }
+})();
+
 (async ()=>{
    try{
     await initializeTables();
@@ -100,10 +116,6 @@ import { SalesWithProduct, JoinSalesWithProductDetails} from "./examples/joins";
    catch (error) {
     console.error("Error in sales with product details operations:", error);
 }})()
-
-
-
-
 
     // *grouping timo
 
