@@ -84,7 +84,7 @@ class Database {
                     product_id INT PRIMARY KEY,
                     product_name VARCHAR(100),
                     category VARCHAR(50),
-                    unit_price DECIMAL(10, 2),
+                    unit_price DECIMAL(10, 2)
                 )
             `);
       console.log("Product table created or already exists"); // Create employees table
