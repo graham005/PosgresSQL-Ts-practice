@@ -1,5 +1,9 @@
 import { initializeTables } from "./config/database";
 import { SalesService } from "./examples/querying &filtering";
+import {Products,  insertOneProduct, insertMultipleProducts,query} from "./examples/joins";
+import {Sales, insertOneSales, insertMultipleSales, querySales} from "./examples/joins";
+import { SalesWithProduct, JoinSalesWithProductDetails} from "./examples/joins";
+
 (async () => {
   try {
     await initializeTables();
@@ -26,10 +30,7 @@ import { SalesService } from "./examples/querying &filtering";
       await salesService.getSalesByHighestQuantity();
     console.log("Sales by highest quantity:", salesByHighestQuantity);
 
-    // !joins sheila
-
-    // *grouping timo
-
+    
     ///? enock cubes
 
     //
@@ -37,3 +38,72 @@ import { SalesService } from "./examples/querying &filtering";
     console.error("Error initializing database:", error);
   }
 })();
+
+
+    // !joins sheila
+(async () => {
+  try{
+    await initializeTables();
+
+    const product_id = await insertOneProduct({product_id:101,  product_name:'Laptop', category:'Electronics',unit_price: 500.00});
+    console.log(`Product inserted with ID: ${product_id}`);
+
+    const productToInsert : Products[] = [
+      {product_id:102, product_name:'Smartphone', category:'Electronics', unit_price:300.00},
+      {product_id:103,  product_name:'Headphones', category:'Electronics', unit_price:30.00},
+      {product_id:104, product_name:'Keyboard', category:'Electronics', unit_price:20.00},
+      {product_id:105, product_name:'Mouse', category:'Electronics',unit_price: 15.00}
+    ];
+    await insertMultipleProducts(productToInsert);
+
+    const allProducts = await query();
+    console.log("All products in database:", allProducts);
+    console.table(allProducts);
+  } catch (error) {
+    console.error("Error in product operations:", error);
+  }
+})();
+
+(async () => {
+  try{
+    await initializeTables();
+
+    const sales_id = await insertOneSales({product_id: 101, quantity_sold: 5, sale_date: new Date('2024-01-01'), total_price: 2500.00});
+    console.log(`Sales inserted with ID: ${sales_id}`);
+
+    const salesToInsert : Sales[] = [
+      {product_id: 102, quantity_sold: 3, sale_date:new Date('2024-01-02') , total_price: 900.00},
+      {product_id: 103, quantity_sold: 2, sale_date: new Date('2024-01-02'), total_price: 60.00},
+      {product_id: 104, quantity_sold: 4, sale_date: new Date('2024-01-02'), total_price: 80.00},
+      {product_id: 105, quantity_sold: 6, sale_date:new Date('2024-01-02'), total_price: 90.00}
+    ];
+    await insertMultipleSales(salesToInsert);
+
+    const allSales = await querySales();
+    console.log("All sales in database:", allSales);
+    console.table(allSales);
+  }
+  catch (error) {
+    console.error("Error in sales operations:", error);
+  }
+}
+)();
+ 
+(async ()=>{
+   try{
+    await initializeTables();
+
+    const salesWithProductDetails = await JoinSalesWithProductDetails();
+    console.log("Sales with product details:", salesWithProductDetails);
+    console.table(salesWithProductDetails);
+   }
+   catch (error) {
+    console.error("Error in sales with product details operations:", error);
+}})()
+
+
+
+
+
+    // *grouping timo
+
