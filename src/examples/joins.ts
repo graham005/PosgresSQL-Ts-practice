@@ -10,7 +10,7 @@ export interface Products {
 }
 
 // Insert a single user into the database
-export const insertOneProduct = async (Product:Products): Promise<number | undefined> => {
+export const insertOneProduct = async (Product:Products): Promise<number | undefined> => {              
     try {
         const res = await executeQuery(
             'INSERT INTO users (product_name, category, unit_price) VALUES ($1, $2, $3, $4) RETURNING id',
