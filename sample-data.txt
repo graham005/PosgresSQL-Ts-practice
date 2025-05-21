@@ -27,7 +27,7 @@ INSERT INTO employees VALUES
 (105, 'David', 'Jones', 'david.j@company.com', '515-123-4571', '2022-01-30', 'MK_MAN', 8800.00);
 
 
-5-- Insert sample data into customer table
+5-- Insert sample data into customer table 
 
 (101, 'Robert', 'Taylor', 'robert.t@email.com', '212-555-1234', '123 Main St', 'New York', 'NY', '10001', '2022-01-15'),
 (102, 'Jennifer', 'Anderson', 'jennifer.a@email.com', '213-555-2345', '456 Oak Ave', 'Los Angeles', 'CA', '90001', '2022-02-20'),
