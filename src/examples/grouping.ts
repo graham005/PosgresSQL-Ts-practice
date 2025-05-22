@@ -1,5 +1,4 @@
-import { start } from 'repl';
-import db from "../config/database";
+import db from "../config/database";// Adjust the import path as necessary
 //grouping sales by products with custom filtering
 const groupSalesByProduct =async (startDate?:Date , EndDate?:Date)=>{
     try{ 
@@ -115,4 +114,8 @@ export { groupSalesByProduct, groupEmployeesByJob, groupOrdersByCustomer, groupP
 
         return { rows: [] }; // Replace with actual query result
     }
+
+    //export this file to index.ts
+export default { groupSalesByProduct, groupEmployeesByJob, groupOrdersByCustomer, groupProductsByCategory, groupEmployeesByHireYear };
+
    
