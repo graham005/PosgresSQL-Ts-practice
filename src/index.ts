@@ -4,6 +4,10 @@ import {Products,  insertOneProduct, insertMultipleProducts,query} from "./examp
 import {Sales, insertOneSales, insertMultipleSales, querySales} from "./examples/joins";
 import { SalesWithProduct, JoinSalesWithProductDetails} from "./examples/joins";
 import { updateOneProduct,deleteOneProduct,upsertProducts} from "./examples/modifying";
+import{ groupSalesByProduct, groupEmployeesByJob, groupOrdersByCustomer, groupProductsByCategory, groupEmployeesByHireYear } from "./examples/grouping";
+
+   
+
 
 (async () => {
   try {
